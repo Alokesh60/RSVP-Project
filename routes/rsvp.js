@@ -1,5 +1,3 @@
-//mongodb+srv://alokeshlk60:admin1234@cluster0.abcde.mongodb.net/rsvpdb
-
 const express = require("express");
 const router = express.Router();
 const Attendee = require("../models/Attendee");

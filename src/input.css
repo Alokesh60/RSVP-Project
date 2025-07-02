@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+:root {
+  --color-primary: 79 70 229; /* #4F46E5 in RGB */
+  --color-primary-dark: 67 56 202; /* #4338CA in RGB */
+}
+
+/* Optional: Add custom classes if needed */
+.nav-item a.bg-primary {
+  background-color: rgb(var(--color-primary));
+  color: white;
+}
+
+.nav-item a:hover:not(.bg-primary) i {
+  color: rgb(var(--color-primary));
+}

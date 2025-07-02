@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/output.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="font-[Inter] bg-gradient-to-br from-[#f0f4ff] to-[#ffffff]">
+    <%- include('./components/navbar') %>
+
+    <main class="flex-1 overflow-auto"><%- body %></main>
+    <script>
+      document
+        .getElementById("sidebar-toggle")
+        ?.addEventListener("click", () => {
+          const menu = document.getElementById("mobile-menu");
+          if (menu) {
+            menu.classList.toggle("hidden");
+          }
+        });
+    </script>
+  </body>
+</html>

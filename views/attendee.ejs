@@ -1,0 +1,138 @@
+<div class="container max-w-7xl mx-auto">
+  <header
+    class="flex justify-between items-center mb-8 p-5 bg-white rounded-2xl shadow-lg shadow-indigo-100"
+  >
+    <div class="header-content flex items-center gap-4">
+      <div
+        class="w-12 h-12 bg-indigo-600 rounded-xl flex items-center justify-center"
+      >
+        <i class="fas fa-users text-white text-xl"></i>
+      </div>
+      <div>
+        <h1 class="text-2xl font-bold text-slate-800 mb-1">
+          Attendees Management
+        </h1>
+        <p class="text-slate-500 text-sm flex items-center gap-1">
+          <i class="fas fa-info-circle"></i>
+          View and manage all event attendees
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <div
+    class="table-section bg-white rounded-2xl overflow-hidden shadow-lg shadow-gray-100"
+  >
+    <div class="table-container overflow-x-auto">
+      <table class="w-full min-w-[1000px] border-separate border-spacing-0">
+        <thead class="bg-slate-100">
+          <tr>
+            <th
+              class="p-5 text-left font-semibold text-slate-500 text-xs uppercase tracking-wider border-b border-slate-200"
+            >
+              <i class="fas fa-user text-indigo-600 mr-2"></i>
+              Name
+            </th>
+            <th
+              class="p-5 text-left font-semibold text-slate-500 text-xs uppercase tracking-wider border-b border-slate-200"
+            >
+              <i class="fas fa-envelope text-indigo-600 mr-2"></i>
+              Email
+            </th>
+            <th
+              class="p-5 text-left font-semibold text-slate-500 text-xs uppercase tracking-wider border-b border-slate-200"
+            >
+              <i class="fas fa-calendar-day text-indigo-600 mr-2"></i>
+              Event
+            </th>
+            <th
+              class="p-5 text-left font-semibold text-slate-500 text-xs uppercase tracking-wider border-b border-slate-200"
+            >
+              <i class="fas fa-info-circle text-indigo-600 mr-2"></i>
+              Status
+            </th>
+            <th
+              class="p-5 text-left font-semibold text-slate-500 text-xs uppercase tracking-wider border-b border-slate-200"
+            >
+              <i class="fas fa-calendar-alt text-indigo-600 mr-2"></i>
+              Registered On
+            </th>
+            <th
+              class="p-5 text-left font-semibold text-slate-500 text-xs uppercase tracking-wider border-b border-slate-200"
+            >
+              <i class="fas fa-cog text-indigo-600 mr-2"></i>
+              Manage
+            </th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% attendees.forEach(attendee => { %>
+          <tr
+            class="hover:bg-slate-50 transition-colors border-b border-slate-100"
+          >
+            <td class="p-5 text-slate-700">
+              <div class="user-cell flex items-center gap-4">
+                <div
+                  class="user-avatar w-11 h-11 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 text-lg"
+                >
+                  <i class="fas fa-user"></i>
+                </div>
+                <div class="user-info">
+                  <div class="user-name font-semibold text-slate-800 mb-1">
+                    <%= attendee.name %>
+                  </div>
+                </div>
+              </div>
+            </td>
+            <td class="p-5 text-slate-700">
+              <div class="email-cell flex items-center gap-2">
+                <i class="fas fa-envelope text-slate-400"></i>
+                <%= attendee.email %>
+              </div>
+            </td>
+            <td class="p-5 text-slate-700">
+              <div class="event-cell flex items-center gap-2">
+                <i class="fas fa-calendar text-slate-400"></i>
+                <%= attendee.event ? attendee.event.eventName : "Unknown Event"
+                %>
+              </div>
+            </td>
+            <td class="p-5 text-slate-700">
+              <span
+                class="status-badge inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-yellow-50 text-yellow-600"
+              >
+                <i class="fas fa-user-clock"></i>
+                Registered
+              </span>
+            </td>
+            <td class="p-5 text-slate-700">
+              <div class="flex items-center gap-2 text-sm text-slate-600">
+                <i class="fas fa-clock text-slate-400"></i>
+                <%= new Date(attendee.rsvpAt).toLocaleDateString('en-IN', {
+                year: 'numeric', month: 'short', day: 'numeric' }) %>
+              </div>
+            </td>
+            <td class="p-5 text-slate-700">
+              <div class="flex gap-2">
+                <form
+                  action="/attendee/<%= attendee._id %>?_method=DELETE"
+                  method="POST"
+                >
+                  <button
+                    type="submit"
+                    class="bg-red-100 text-red-600 px-3 py-2 rounded-lg text-sm font-medium hover:bg-red-200 transition"
+                  >
+                    <i class="fas fa-trash-alt mr-1"></i>
+                    Delete
+                  </button>
+                </form>
+              </div>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

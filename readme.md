@@ -1,5 +1,4 @@
 # 🎟 EventEase – RSVP Event Management System
-
 EventEase is a full-stack RSVP event management web application built using _Node.js, **Express.js, **MongoDB, and \*\*EJS_. It allows admins to create and manage events and attendees, while users can easily view and register for events.
 
 ---
